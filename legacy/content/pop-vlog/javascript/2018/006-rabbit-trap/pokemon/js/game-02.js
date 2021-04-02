@@ -14,6 +14,9 @@ const Game = function() {
     gravity:3,
 
     player:new Game.Player(),
+    bulbasaur:new Game.Bulbasaur(),
+    charmander:new Game.Charmander(),
+    squirtle:new Game.Squirtle(),
 
     height:72,
     width:128,
@@ -59,9 +62,33 @@ Game.Player = function(x, y) {
   this.velocity_x = 0;
   this.velocity_y = 0;
   this.width      = 16;
-  this.x          = 100;
+  this.x          = 57;
   this.y          = 50;
 
+};
+
+Game.Bulbasaur = function(x, y) {
+  this.color = "#00ff44";
+  this.height = 10;
+  this.width      = 10;
+  this.x          = 30;
+  this.y          = 10;
+};
+
+Game.Charmander = function(x, y) {
+  this.color = "#ff5511";
+  this.height = 10;
+  this.width      = 10;
+  this.x          = 60;
+  this.y          = 10;
+};
+
+Game.Squirtle = function(x, y) {
+  this.color = "#1177ff";
+  this.height = 10;
+  this.width      = 10;
+  this.x          = 90;
+  this.y          = 10;
 };
 
 Game.Player.prototype = {
@@ -92,6 +119,10 @@ Game.Player.prototype = {
   moveRight:function() { this.velocity_x += 0.5; },
   moveUp:function() { this.velocity_y -= 0.5;},
   moveDown:function() { this.velocity_y += 0.5;},
+  setRed:function() {this.color = "red"},
+  setGreen:function() {this.color = "green"},
+  setBlue:function() {this.color = "blue"},
+  setYellow:function() {this.color = "yellow"},
 
   update:function() {
 
@@ -100,4 +131,16 @@ Game.Player.prototype = {
 
   }
 
+};
+
+Game.Bulbasaur.prototype = {
+  constructor : Game.Bulbasaur
+};
+
+Game.Charmander.prototype = {
+  constructor : Game.Charmander
+};
+
+Game.Squirtle.prototype = {
+  constructor : Game.Squirtle
 };

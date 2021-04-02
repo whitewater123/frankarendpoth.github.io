@@ -58,3 +58,23 @@ canvas { image-rendering:pixelated; }
   text-decoration:none;
 
 }
+
+.ColGuide, #pokedex {
+  color: white;
+}
+
+.RedCol {
+  color: red;
+}
+
+.GreenCol {
+  color: green;
+}
+
+.BlueCol {
+  color: blue;
+}
+
+.YellowCol {
+  color: yellow;
+}

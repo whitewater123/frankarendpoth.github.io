@@ -12,6 +12,8 @@ As a general rule, anything that causes two components to communicate should be
 in the main file because we want to reduce internal references between components
 as much as possible. They should communicate via public methods that take primitives. */
 
+var pokedex = document.getElementById('pokedex');
+
 window.addEventListener("load", function(event) {
 
   "use strict";
@@ -46,6 +48,9 @@ window.addEventListener("load", function(event) {
 
     display.fill(game.world.background_color);// Clear background to game's background color.
     display.drawRectangle(game.world.player.x, game.world.player.y, game.world.player.width, game.world.player.height, game.world.player.color);
+    display.drawRectangle(game.world.bulbasaur.x, game.world.bulbasaur.y, game.world.bulbasaur.width, game.world.bulbasaur.height, game.world.bulbasaur.color);
+    display.drawRectangle(game.world.charmander.x, game.world.charmander.y, game.world.charmander.width, game.world.charmander.height, game.world.charmander.color);
+    display.drawRectangle(game.world.squirtle.x, game.world.squirtle.y, game.world.squirtle.width, game.world.squirtle.height, game.world.squirtle.color);
     display.render();
 
   };
@@ -56,9 +61,15 @@ window.addEventListener("load", function(event) {
     if (controller.right.active) { game.world.player.moveRight(); }
     if (controller.up.active)    { game.world.player.moveUp(); }
     if (controller.down.active)    { game.world.player.moveDown(); }
+    if (controller.one.active)    { game.world.player.setRed(); }
+    if (controller.two.active)    { game.world.player.setGreen(); }
+    if (controller.three.active)    { game.world.player.setBlue(); }
+    if (controller.four.active)    { game.world.player.setYellow(); }
+    if (game.world.player.x <= game.world.bulbasaur.x + 10 && game.world.player.x >= (game.world.bulbasaur.x) - 16 && game.world.player.y <= game.world.bulbasaur.y + 10 && game.world.player.y >= (game.world.bulbasaur.y) - 16)      {pokedex.innerHTML = (showPokemon("https://pokeapi.co/api/v2/pokemon/1/"));}
+    if (game.world.player.x <= game.world.charmander.x + 10 && game.world.player.x >= (game.world.charmander.x) - 16 && game.world.player.y <= game.world.charmander.y + 10 && game.world.player.y >= (game.world.charmander.y) - 16)      {showPokemon("https://pokeapi.co/api/v2/pokemon/4/");}
+    if (game.world.player.x <= game.world.squirtle.x + 10 && game.world.player.x >= (game.world.squirtle.x) - 16 && game.world.player.y <= game.world.squirtle.y + 10 && game.world.player.y >= (game.world.squirtle.y) - 16)      {showPokemon("https://pokeapi.co/api/v2/pokemon/7/");}
 
     game.update();
-
   };
 
       /////////////////

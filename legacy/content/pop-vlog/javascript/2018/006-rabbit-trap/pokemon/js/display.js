@@ -1,5 +1,4 @@
-
-
+//Drawing and rendering is done in this file.
 const Display = function(canvas) {
 
   this.buffer  = document.createElement("canvas").getContext("2d"),

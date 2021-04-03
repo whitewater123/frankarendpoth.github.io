@@ -1,3 +1,4 @@
+//PokeAPI functionality.
 function getJSON(url) {
     return fetch(url)
       .then(function(response) {
@@ -15,6 +16,7 @@ function getJSON(url) {
     return getJSON(url);
   }
 
+  //Write the Pokemon's data to the Pokedex's h1 object
   function renderPokedex(pokemon, DexList) {
       var type2 = "n/a";
       if (pokemon.types[1]){
@@ -32,6 +34,7 @@ function getJSON(url) {
  
   };
 
+  //Retrieve Pokemon from the API database
   function showPokemon(url) {
     getPokemon(url).then(function (data) {
       console.log(data);

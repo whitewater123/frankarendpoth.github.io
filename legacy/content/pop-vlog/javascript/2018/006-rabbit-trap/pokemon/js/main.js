@@ -1,14 +1,11 @@
+//Game logic occurs in this file.
 var pokedex = document.getElementById('pokedex');
-
 
 window.addEventListener("load", function(event) {
 
   "use strict";
 
-      ///////////////////
-    //// FUNCTIONS ////
-  ///////////////////
-
+  //FUNCTIONS
   var keyDownUp = function(event) {
 
     controller.keyDownUp(event.type, event.keyCode);
@@ -37,18 +34,25 @@ window.addEventListener("load", function(event) {
 
   var update = function() {
 
+    //Update the Pokedex based on Pokemon choice as stored in localStorage
     if (localStorage.getItem('PokePartner') != null) {
       showPokemon(localStorage.getItem('PokePartner'));
     }
+    
+    //Player movement
     if (controller.left.active)  { game.world.player.moveLeft();  }
     if (controller.right.active) { game.world.player.moveRight(); }
     if (controller.up.active)    { game.world.player.moveUp(); }
     if (controller.down.active)    { game.world.player.moveDown(); }
+
+    //Change the player's color when number keys are pressed
     if (controller.one.active)    { game.world.player.setRed(); }
     if (controller.two.active)    { game.world.player.setGreen(); }
     if (controller.three.active)    { game.world.player.setBlue(); }
     if (controller.four.active)    { game.world.player.setYellow(); }
     if (controller.five.active)    { game.world.player.setPink(); }
+
+    //Pokemon collision detection
     if (game.world.player.x <= game.world.bulbasaur.x + 10 && game.world.player.x >= (game.world.bulbasaur.x) - 16 && game.world.player.y <= game.world.bulbasaur.y + 10 && game.world.player.y >= (game.world.bulbasaur.y) - 16)      {localStorage.setItem('PokePartner', "https://pokeapi.co/api/v2/pokemon/1/");}
     if (game.world.player.x <= game.world.charmander.x + 10 && game.world.player.x >= (game.world.charmander.x) - 16 && game.world.player.y <= game.world.charmander.y + 10 && game.world.player.y >= (game.world.charmander.y) - 16)      {localStorage.setItem('PokePartner', "https://pokeapi.co/api/v2/pokemon/4/");}
     if (game.world.player.x <= game.world.squirtle.x + 10 && game.world.player.x >= (game.world.squirtle.x) - 16 && game.world.player.y <= game.world.squirtle.y + 10 && game.world.player.y >= (game.world.squirtle.y) - 16)      {localStorage.setItem('PokePartner', "https://pokeapi.co/api/v2/pokemon/7/");}
@@ -57,20 +61,15 @@ window.addEventListener("load", function(event) {
 
     game.update();
   };
+  
 
-      /////////////////
-    //// OBJECTS ////
-  /////////////////
-
+  //OBJECTS
   var controller = new Controller();
   var display    = new Display(document.querySelector("canvas"));
   var game       = new Game();
   var engine     = new Engine(1000/30, render, update);
 
-      ////////////////////
-    //// INITIALIZE ////
-  ////////////////////
-
+  //INITIALIZE
   display.buffer.canvas.height = game.world.height;
   display.buffer.canvas.width = game.world.width;
 

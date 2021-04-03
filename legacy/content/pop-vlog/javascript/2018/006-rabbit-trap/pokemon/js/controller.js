@@ -1,5 +1,4 @@
-
-
+//This file handles input.
 const Controller = function() {
 
   this.left  = new Controller.ButtonInput();

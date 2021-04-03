@@ -1,5 +1,4 @@
-
-
+//This file mainly updates frames.
 const Engine = function(time_step, update, render) {
 
   this.accumulated_time        = 0;

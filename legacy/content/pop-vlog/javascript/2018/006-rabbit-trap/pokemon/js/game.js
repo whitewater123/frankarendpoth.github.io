@@ -1,5 +1,4 @@
-
-
+//Player and Pokemon objects, as well as their functions, are defined in this file.
 const Game = function() {
 
   this.world = {
@@ -7,7 +6,6 @@ const Game = function() {
     background_color:"rgba(40,48,56,0.25)",
 
     friction:0.9,
-    gravity:3,
 
     player:new Game.Player(),
     bulbasaur:new Game.Bulbasaur(),
@@ -19,6 +17,7 @@ const Game = function() {
     height:72,
     width:128,
 
+    //Keep the player from going past walls
     collideObject:function(object) {
 
       if (object.x < 0) { object.x = 0; object.velocity_x = 0; }
@@ -52,6 +51,7 @@ const Game = function() {
 
 Game.prototype = { constructor : Game };
 
+//Player and Pokemon values
 Game.Player = function(x, y) {
 
   this.color      = "#ff0000";
@@ -105,32 +105,18 @@ Game.Mew = function(x, y) {
   this.y          = 59;
 };
 
+//Player prototype. Contains the constructor and functions.
 Game.Player.prototype = {
 
   constructor : Game.Player,
 
-  jump:function() {
-
-    if (!this.jumping) {
-
-      this.color = "#" + Math.floor(Math.random() * 16777216).toString(16);
-      if (this.color.length != 7) {
-
-        this.color = this.color.slice(0, 1) + "0" + this.color.slice(1, 6);
-
-      }
-
-      this.jumping     = true;
-      this.velocity_y -= 20;
-
-    }
-
-  },
-
+  //Make the player move
   moveLeft:function()  { this.velocity_x -= 0.5; },
   moveRight:function() { this.velocity_x += 0.5; },
   moveUp:function() { this.velocity_y -= 0.5;},
   moveDown:function() { this.velocity_y += 0.5;},
+
+  //Player's color is saved in localStorage
   setRed:function() { localStorage.setItem('playerColor', "red"); },
   setGreen:function() { localStorage.setItem('playerColor', "green"); },
   setBlue:function() { localStorage.setItem('playerColor', "blue"); },
@@ -139,7 +125,7 @@ Game.Player.prototype = {
 
   update:function() {
 
-    this.color = localStorage.getItem('playerColor');
+    this.color = localStorage.getItem('playerColor'); //Player's color choice is remembered between sessions
     this.x += this.velocity_x;
     this.y += this.velocity_y;
 
@@ -147,6 +133,7 @@ Game.Player.prototype = {
 
 };
 
+//Pokemon Prototypes. All they need is a constructor.
 Game.Bulbasaur.prototype = {
   constructor : Game.Bulbasaur
 };

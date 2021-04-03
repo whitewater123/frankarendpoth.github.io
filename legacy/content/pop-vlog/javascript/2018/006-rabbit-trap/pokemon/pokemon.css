@@ -88,6 +88,11 @@ canvas { image-rendering:pixelated; }
   padding: 1em;
 }
 
+.PinkCol {
+  color: pink;
+  padding: 1em;
+}
+
 #pokedex {
   color: blanchedalmond;
   border: 5px solid red;

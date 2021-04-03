@@ -13,6 +13,7 @@ const Game = function() {
     bulbasaur:new Game.Bulbasaur(),
     charmander:new Game.Charmander(),
     squirtle:new Game.Squirtle(),
+    pikachu:new Game.Pikachu(),
     mew:new Game.Mew(),
 
     height:72,
@@ -88,6 +89,14 @@ Game.Squirtle = function(x, y) {
   this.y          = 10;
 };
 
+Game.Pikachu = function(x, y) {
+  this.color = "#ffd900";
+  this.height = 10;
+  this.width      = 10;
+  this.x          = 3;
+  this.y          = 59;
+};
+
 Game.Mew = function(x, y) {
   this.color = "#262e39";
   this.height = 10;
@@ -126,6 +135,7 @@ Game.Player.prototype = {
   setGreen:function() { localStorage.setItem('playerColor', "green"); },
   setBlue:function() { localStorage.setItem('playerColor', "blue"); },
   setYellow:function() { localStorage.setItem('playerColor', "yellow"); },
+  setRed:function() { localStorage.setItem('playerColor', "pink"); },
 
   update:function() {
 
@@ -147,6 +157,10 @@ Game.Charmander.prototype = {
 
 Game.Squirtle.prototype = {
   constructor : Game.Squirtle
+};
+
+Game.Pikachu.prototype = {
+  constructor : Game.Pikachu
 };
 
 Game.Mew.prototype = {

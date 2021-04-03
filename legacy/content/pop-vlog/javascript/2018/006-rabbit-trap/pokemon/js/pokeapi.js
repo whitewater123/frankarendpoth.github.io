@@ -1,14 +1,3 @@
-/*var fetchPokemon = function() {
-
-    let url = "https://pokeapi.co/api/v2/pokemon?limit=151";
-
-    fetch("url")
-    .then(response => response.json());
-    then(function(pokeData) {
-        console.log(pokeData);
-    });
-}*/
-
 function getJSON(url) {
     return fetch(url)
       .then(function(response) {
@@ -26,11 +15,28 @@ function getJSON(url) {
     return getJSON(url);
   }
 
+  function renderPokedex(pokemon, DexList) {
+      var type2 = "n/a";
+      if (pokemon.types[1]){
+        type2 = pokemon.types[1].type.name;
+      }
+    DexList.innerHTML = `
+    <td class="pokeName">Name: ${pokemon.name}</td>
+    </br>
+    <td class= "pokeHeight">Height: 0.${pokemon.height} m</td>
+    </br>
+    <td class= "pokeType1">Type - 1: ${pokemon.types[0].type.name}</td>
+    </br>
+    <td class= "pokeType2"> type - 2: ${type2}</td>
+    `;
+ 
+  };
+
   function showPokemon(url) {
     getPokemon(url).then(function (data) {
       console.log(data);
-      const results = data.results;
-      return (data.results);
-    })};
+      const results = data;
 
-    //showPokemon();
+      const DexList = document.getElementById("pokedex");
+      renderPokedex(results, DexList);
+    })};

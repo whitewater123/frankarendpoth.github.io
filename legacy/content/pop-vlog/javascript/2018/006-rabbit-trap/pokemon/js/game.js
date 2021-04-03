@@ -1,8 +1,4 @@
-// Frank Poth 03/09/2018
 
-/* The Game class has been updated with a new Player class and given a new world
-object that controls the virtual game world. Players, NPCs, world dimensions, collision
-maps, and everything to do with the game world are stored in the world object. */
 
 const Game = function() {
 
@@ -17,6 +13,7 @@ const Game = function() {
     bulbasaur:new Game.Bulbasaur(),
     charmander:new Game.Charmander(),
     squirtle:new Game.Squirtle(),
+    mew:new Game.Mew(),
 
     height:72,
     width:128,
@@ -91,6 +88,14 @@ Game.Squirtle = function(x, y) {
   this.y          = 10;
 };
 
+Game.Mew = function(x, y) {
+  this.color = "#262e39";
+  this.height = 10;
+  this.width      = 10;
+  this.x          = 115;
+  this.y          = 59;
+};
+
 Game.Player.prototype = {
 
   constructor : Game.Player,
@@ -99,9 +104,7 @@ Game.Player.prototype = {
 
     if (!this.jumping) {
 
-      this.color = "#" + Math.floor(Math.random() * 16777216).toString(16);// Change to random color
-      /* toString(16) will not add a leading 0 to a hex value, so this: #0fffff, for example,
-      isn't valid. toString would cut off the first 0. The code below inserts it. */
+      this.color = "#" + Math.floor(Math.random() * 16777216).toString(16);
       if (this.color.length != 7) {
 
         this.color = this.color.slice(0, 1) + "0" + this.color.slice(1, 6);
@@ -119,13 +122,14 @@ Game.Player.prototype = {
   moveRight:function() { this.velocity_x += 0.5; },
   moveUp:function() { this.velocity_y -= 0.5;},
   moveDown:function() { this.velocity_y += 0.5;},
-  setRed:function() {this.color = "red"},
-  setGreen:function() {this.color = "green"},
-  setBlue:function() {this.color = "blue"},
-  setYellow:function() {this.color = "yellow"},
+  setRed:function() { localStorage.setItem('playerColor', "red"); },
+  setGreen:function() { localStorage.setItem('playerColor', "green"); },
+  setBlue:function() { localStorage.setItem('playerColor', "blue"); },
+  setYellow:function() { localStorage.setItem('playerColor', "yellow"); },
 
   update:function() {
 
+    this.color = localStorage.getItem('playerColor');
     this.x += this.velocity_x;
     this.y += this.velocity_y;
 
@@ -143,4 +147,8 @@ Game.Charmander.prototype = {
 
 Game.Squirtle.prototype = {
   constructor : Game.Squirtle
+};
+
+Game.Mew.prototype = {
+  constructor : Game.Mew
 };

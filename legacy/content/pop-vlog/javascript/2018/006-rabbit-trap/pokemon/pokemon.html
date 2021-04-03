@@ -3,73 +3,38 @@
 <html>
 
   <head>
-
-    <!-- Added this meta tag 04/07/2018 -->
     <meta name = "viewport" content = "user-scalable=no,width=device-width">
     <link href = "pokemon.css" rel = "stylesheet" type = "text/css">
-    <title>Rabbit Trap</title>
+    <title>Starting Pokemon Choice</title>
 
   </head>
 
   <body>
 
-    <!-- Added a menu to navigate projects from the main page -->
-    <div id = "menu">
-      <p>menu</p>
-      <div id = "menu-list">
-        <br>
-        <a href = "rabbit-trap.html?01">part1</a>
-        <a href = "rabbit-trap.html?02">part2</a>
-        <a href = "rabbit-trap.html?03">part3</a>
-        <a href = "rabbit-trap.html?04">part4</a>
-        <a href = "rabbit-trap.html?05">part5</a>
-        <a href = "rabbit-trap.html?06">part6</a>
-        <a href = "rabbit-trap.html?07">part7</a>
-      </div>
-    </div>
+  
 
-    <h2 class="ColGuide">Use the number keys to choose your player color: 
+  <h2 class="ColGuide">Use the number keys to save your player color: 
+    <div class = "ColNums">
       <h2 class="RedCol">1</h2>
       <h2 class="GreenCol">2</h2>
       <h2 class="BlueCol">3</h2>
       <h2 class="YellowCol">4</h2>
+    </div>
     </h2>
 
     <canvas></canvas>
 
-    <!-- Since Rabbit Trap is a multi-part series and I didn't feel like writing
-    html and css for every single part, I decided to dynamically add the appropriate
-    js file containing the game logic for each part based on url parameters. -->
+    
     <script type = "text/javascript">
 
-      let part = String(window.location).split("?")[1];
+      //src files declared in an array for convinience.
+      let files = ["js/controller.js", "js/display.js", "js/engine.js", "js/game.js", "js/main.js"];
 
-      /* Added on 03/09/2018 to allow reusing scripts from previous parts. */
-      let parts = {
-
-        "01":["01/controller-01.js", "01/display-01.js", "01/engine-01.js", "01/game-01.js", "01/main-01.js"],
-        "02":["js/controller-02.js", "js/display-02.js", "js/engine-01.js", "js/game-02.js", "js/main-02.js"],
-        "03":["02/controller-02.js", "03/display-03.js", "01/engine-01.js", "03/game-03.js", "03/main-03.js"],
-        "04":["02/controller-02.js", "04/display-04.js", "01/engine-01.js", "04/game-04.js", "03/main-03.js"],
-        "05":["02/controller-02.js", "05/display-05.js", "01/engine-01.js", "05/game-05.js", "05/main-05.js"],
-        "06":["02/controller-02.js", "05/display-05.js", "06/engine-06.js", "06/game-06.js", "06/main-06.js"],
-        "07":["02/controller-02.js", "05/display-05.js", "06/engine-06.js", "07/game-07.js", "07/main-07.js"],
-
-      };
-
-      switch(part) {
-
-        case "01": case "02": case "03": case "04": case "05": case "06": case "07": break;
-        default:
-          part = "02";
-
-      }
-
-      for (let index = 0; index < parts[part].length; index ++) {
+      for (let index = 0; index < files.length; index ++) {
 
         let script = document.createElement("script");
         script.setAttribute("type", "text/javascript");
-        script.setAttribute("src", parts[part][index]);
+        script.setAttribute("src", files[index]);
         document.head.appendChild(script);
 
       }
@@ -85,15 +50,12 @@
 
       menu_list.style.display = "none";
       
-      //remove this later/ implement it into the html better.
-      
-
     </script>
     <script src="./js/pokeapi.js" async defer>
-     //= "https://pokeapi.co/api/v2/pokemon?limit=151"
     </script>
 
-    <h1 id="pokedex">Choose Your Pokemon</h1>
+<h1 class="title">Choose Your Pokemon</h1>
+    <h1 id="pokedex">Pokedex</h1>
     
 
 

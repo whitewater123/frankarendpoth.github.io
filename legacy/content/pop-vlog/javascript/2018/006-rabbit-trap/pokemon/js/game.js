@@ -135,7 +135,7 @@ Game.Player.prototype = {
   setGreen:function() { localStorage.setItem('playerColor', "green"); },
   setBlue:function() { localStorage.setItem('playerColor', "blue"); },
   setYellow:function() { localStorage.setItem('playerColor', "yellow"); },
-  setRed:function() { localStorage.setItem('playerColor', "pink"); },
+  setPink:function() { localStorage.setItem('playerColor', "#ff3c6f"); },
 
   update:function() {
 

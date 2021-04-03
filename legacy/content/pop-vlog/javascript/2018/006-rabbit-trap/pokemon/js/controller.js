@@ -10,6 +10,7 @@ const Controller = function() {
   this.two   = new Controller.ButtonInput();
   this.three = new Controller.ButtonInput();
   this.four  = new Controller.ButtonInput();
+  this.five  = new Controller.ButtonInput();
 
   this.keyDownUp = function(type, key_code) {
 
@@ -25,6 +26,7 @@ const Controller = function() {
       case 50: this.two.getInput(down);   break;
       case 51: this.three.getInput(down); break;
       case 52: this.four.getInput(down);  break;
+      case 53: this.five.getInput(down);  break;
 
     }
 

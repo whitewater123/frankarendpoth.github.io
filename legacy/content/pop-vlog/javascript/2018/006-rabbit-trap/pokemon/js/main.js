@@ -48,6 +48,7 @@ window.addEventListener("load", function(event) {
     if (controller.two.active)    { game.world.player.setGreen(); }
     if (controller.three.active)    { game.world.player.setBlue(); }
     if (controller.four.active)    { game.world.player.setYellow(); }
+    if (controller.five.active)    { game.world.player.setPink(); }
     if (game.world.player.x <= game.world.bulbasaur.x + 10 && game.world.player.x >= (game.world.bulbasaur.x) - 16 && game.world.player.y <= game.world.bulbasaur.y + 10 && game.world.player.y >= (game.world.bulbasaur.y) - 16)      {localStorage.setItem('PokePartner', "https://pokeapi.co/api/v2/pokemon/1/");}
     if (game.world.player.x <= game.world.charmander.x + 10 && game.world.player.x >= (game.world.charmander.x) - 16 && game.world.player.y <= game.world.charmander.y + 10 && game.world.player.y >= (game.world.charmander.y) - 16)      {localStorage.setItem('PokePartner', "https://pokeapi.co/api/v2/pokemon/4/");}
     if (game.world.player.x <= game.world.squirtle.x + 10 && game.world.player.x >= (game.world.squirtle.x) - 16 && game.world.player.y <= game.world.squirtle.y + 10 && game.world.player.y >= (game.world.squirtle.y) - 16)      {localStorage.setItem('PokePartner', "https://pokeapi.co/api/v2/pokemon/7/");}
